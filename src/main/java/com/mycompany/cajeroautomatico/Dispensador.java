@@ -1,9 +1,9 @@
 package com.mycompany.cajeroautomatico;
-public class Cajero {
+public class Dispensador {
     private int billetes100, billetes500, billetes1000;
     private int entregaDeBilletes1000 ,entregaDeBilletes500, entregaDeBilletes100 ;
 
-    public Cajero() {
+    public Dispensador() {
         this.billetes100 = 500;
         this.billetes500 = 500;
         this.billetes1000 = 500;
