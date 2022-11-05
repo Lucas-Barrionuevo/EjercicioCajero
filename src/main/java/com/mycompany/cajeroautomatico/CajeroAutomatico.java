@@ -4,6 +4,7 @@ package com.mycompany.cajeroautomatico;
 import java.io.IOException;
 
 public class CajeroAutomatico {
+
     public static void main(String[] args) throws IOException {
         Consola consola = new Consola();
         Cliente cliente = new Cliente();
@@ -161,5 +162,6 @@ public class CajeroAutomatico {
             System.out.println("Introdujo un numero incorrecto");
             consola.despedida();
         }
+
     }
 }
