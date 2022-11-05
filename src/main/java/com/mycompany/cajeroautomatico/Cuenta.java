@@ -11,21 +11,28 @@ public abstract class Cuenta {
     private int tipo;
     private double descubierto;
 
-    public Cuenta(int tipo, String alias, double saldo) {
+    public Cuenta(int tipo, String alias, double saldo, double descubierto) {
         this.alias = alias;
         this.saldo = saldo;
         this.tipo = tipo;
+        this.descubierto = descubierto;
     }
     public Cuenta() {
  
     }
 
-    public void setDescubierto(double descubierto) {
-        this.descubierto = descubierto;
+    public Cuenta(int tipo, String alias, double saldo) {
+        this.alias = alias;
+        this.saldo = saldo;
+        this.tipo = tipo;
     }
 
     public double getDescubierto() {
         return descubierto;
+    }
+
+    public void setDescubierto(double descubierto) {
+        this.descubierto = descubierto;
     }
 
     public void setAlias(String alias) {
@@ -58,5 +65,5 @@ public abstract class Cuenta {
     public void consultarAlias(Cuenta cuenta){
         System.out.println("Su alias es: "+cuenta.getAlias());
     }
- 
+
 }

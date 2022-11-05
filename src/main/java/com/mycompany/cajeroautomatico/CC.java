@@ -4,12 +4,29 @@ public class CC extends Cuenta implements OperacionesARS {
     double descubierto;
 
     public CC(int tipo, String alias, double saldo, double descubierto) {
-        super(tipo,alias,saldo);
+        super(tipo,alias,saldo, descubierto);
         this.descubierto = descubierto;
     }
 
     public CC() {
     }
+
+    public double getDescubierto() {
+        return descubierto;
+    }
+
+    public void setDescubierto(double descubierto) {
+        this.descubierto = descubierto;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+    
 
     @Override
     public void comprarDolares(double compra, Cuenta cuentaEnDolares){

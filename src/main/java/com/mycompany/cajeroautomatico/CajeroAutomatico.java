@@ -13,9 +13,10 @@ public class CajeroAutomatico {
         Movimiento movimiento = new Movimiento();
         LectorDeArchivos lector = new LectorDeArchivos();
         
-        int numTarjeta = consola.bienvenida();
-        int pin =  consola.pin();
-        cliente.setMisCuentas(cliente.validacion(numTarjeta, pin));
+        
+        String numTarjeta = consola.bienvenida();
+        String pin =  consola.pin();
+        cliente.validacion(numTarjeta, pin);
         for (Cuenta cuenta: cliente.getMisCuentas()){
             if(cuenta.getTipo() == 1){
                 ca.setTipo(cuenta.getTipo());
@@ -37,25 +38,22 @@ public class CajeroAutomatico {
             num = consola.consultas();
             if (num==1){
                 cliente.consultarMovimientos(cliente.getAlias());
-                consola.despedida();
             }if (num==2){
                 System.out.println("Su alias es: " + cliente.getAlias());
-                consola.despedida();
             }else {
                 System.out.println("Introdujo un numero incorrecto");
             }
+            num = 0;
         }if (num==2){
             num = consola.tipoDeCuentaARS();
             double monto = consola.monto();
-            String alias = consola.ingreseAlias();
             if (num == 1){
                 ca.retirarEfectivo(monto);
                 num= consola.extracionExitosa(monto);
                 if (num==1){
-                    movimiento.imprimirTicket(alias, monto, "extraccion");
+                    movimiento.imprimirTicket(ca.getAlias(), monto, "extraccion");
                 }
                 if (num==2){
-                    consola.despedida();
                 }else{
                     System.out.println("Introdujo un numero incorrecto");
                 }
@@ -63,17 +61,16 @@ public class CajeroAutomatico {
                 cc.retirarEfectivo(monto);
                 num = consola.extracionExitosa(monto);
                 if (num==1){
-                    movimiento.imprimirTicket(alias, monto, "extraccion");
-                    consola.despedida();
+                    movimiento.imprimirTicket(cc.getAlias(), monto, "extraccion");
                 }
                 if (num==2){
-                    consola.despedida();
                 }else { 
                     System.out.println("Introdujo un numero incorrecto");
                 }
             }else {
                 System.out.println("Introdujo un numero incorrecto");
             }
+            num=0;
         }if (num==3){
             num=consola.tipoDeCuenta();
             double monto = consola.monto();
@@ -82,31 +79,26 @@ public class CajeroAutomatico {
                 num = consola.depositoExitoso(monto);
                 if (num==1) {
                     movimiento.imprimirTicket(ca.getAlias(), monto, "Deposito");
-                    consola.despedida();
                 }if (num==2){
-                    consola.despedida();
                 }
             }if (num ==2){
                 cc.ingresarDinero(monto);
                 num = consola.depositoExitoso(monto);
                 if (num==1) {
                     movimiento.imprimirTicket(cc.getAlias(), monto, "Deposito");
-                    consola.despedida();
                 }if (num==2){
-                    consola.despedida();
                 }
             }if (num==3){
                 dol.ingresarDinero(monto);
                 num = consola.depositoExitoso(monto);
                 if (num==1) {
                     movimiento.imprimirTicket(dol.getAlias(), monto, "Deposito");
-                    consola.despedida();
                 }if (num==2){
-                    consola.despedida();
                 }
             }else {
                 System.out.println("Numero incorrecto");
             }
+            num=0;
         }if (num==4){
             String alias = consola.ingreseAlias();
             for(Cuenta cuenta: lector.getCuentas()){
@@ -117,31 +109,26 @@ public class CajeroAutomatico {
                         num = consola.transferenciaExitosa(monto);
                         if (num==1){
                             System.out.println("La transferencia se revirtio con exito");
-                            consola.despedida();
                         }if (num==2){
                             ca.transferirDinero(monto, cuenta);
                             movimiento.imprimirTicket(alias, monto, "Transferencia");
-                            consola.despedida();
                         }if (num==3){
                             ca.transferirDinero(monto, cuenta);
-                            consola.despedida();
                         }
                     }if (num==2){
                         num = consola.transferenciaExitosa(monto);
                         if (num==1){
                             System.out.println("La transferencia se revirtio con exito");
-                            consola.despedida();
                         }if (num==2){
                             cc.transferirDinero(monto, cuenta);
                             movimiento.imprimirTicket(alias, monto, "Transferencia");
-                            consola.despedida();
                         }if (num==3){
                             ca.transferirDinero(monto, cuenta);
-                            consola.despedida();
                         }
                     }
                 }
             }
+            num=0;
         }if (num==5){
             consola.tipoDeCuentaARS();
             if (num==1){
@@ -151,9 +138,7 @@ public class CajeroAutomatico {
                 num= consola.comprarDolaresExitosa(monto);
                 if (num==1){
                     movimiento.imprimirTicket(ca.getAlias(), monto, "Compra Dolares");
-                    consola.despedida();
                 }if (num==2){
-                    consola.despedida();
                 }
             }if (num==2){
                 double monto= consola.monto();
@@ -162,15 +147,19 @@ public class CajeroAutomatico {
                 num= consola.comprarDolaresExitosa(monto);
                 if (num==1){
                     movimiento.imprimirTicket(cc.getAlias(), monto, "Compra Dolares");
-                    consola.despedida();
                 }if (num==2){
-                    consola.despedida();
+                    
                 }
             }else {
                 System.out.println("Numero Incorrecto");
             }
+        }
+            num=0;
+        if (num ==0){
+            consola.despedida();
         }else {
             System.out.println("Introdujo un numero incorrecto");
+            consola.despedida();
         }
     }
 }

@@ -15,13 +15,13 @@ public class Consola {
             return this.entradaDeTeclado.nextLine();
         }
     
-    public int bienvenida(){
+    public String bienvenida(){
         System.out.println("Bienvenido/a al banco");
-        int numeroDeTarjeta = Integer.parseInt(generarEntrada("Ingrese numero de tarjeta: "));
+        String numeroDeTarjeta = generarEntrada("Ingrese numero de tarjeta: ");
         return numeroDeTarjeta;
     }
-    public int pin(){
-        int pin = Integer.parseInt(generarEntrada("Ingrese numero de pin: "));
+    public String pin(){
+        String pin = generarEntrada("Ingrese numero de pin: ");
         return pin;
     }
     public int menuPrincipal(){

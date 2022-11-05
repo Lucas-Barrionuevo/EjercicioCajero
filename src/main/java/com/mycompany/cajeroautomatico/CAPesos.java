@@ -3,8 +3,9 @@ package com.mycompany.cajeroautomatico;
 public class CAPesos extends Cuenta implements OperacionesARS {
 
     public CAPesos(int tipo, String alias, double saldo) {
-        super(tipo, alias, saldo);
+        super(tipo, alias,saldo);
     }
+
 
     public CAPesos() {
     }

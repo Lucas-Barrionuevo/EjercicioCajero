@@ -4,8 +4,8 @@ package com.mycompany.cajeroautomatico;
 import java.util.HashMap;
 
 public class Tarjeta {
-    int numeroDeTarjeta, pin, cuit;
-    public Tarjeta(int numeroDeTarjeta, int pin, int cuit) {
+    String cuit, numeroDeTarjeta, pin;
+    public Tarjeta(String numeroDeTarjeta, String pin, String cuit) {
         this.numeroDeTarjeta = numeroDeTarjeta;
         this.pin = pin;
         this.cuit = cuit;
@@ -14,15 +14,15 @@ public class Tarjeta {
     public Tarjeta() {
     }
 
-    public int getNumeroDeTarjeta() {
+    public String getNumeroDeTarjeta() {
         return numeroDeTarjeta;
     }
 
-    public int getPin() {
+    public String getPin() {
         return pin;
     }
 
-    public int getCuit() {
+    public String getCuit() {
         return cuit;
     }
     
