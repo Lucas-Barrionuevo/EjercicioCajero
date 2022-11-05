@@ -13,9 +13,6 @@ public class Cliente {
     private String alias;
     private List <Cuenta> misCuentas = new ArrayList <Cuenta>();
     private List <Tarjeta> misTarjetas = new ArrayList <Tarjeta>();
-    private List <Cliente> clientes;
-    private List<Cuenta>cuentas;
-    private List <Tarjeta> tarjetas;
     private List <Movimiento> misMovimientos;
 
     public Cliente(String cuit, String alias) {
