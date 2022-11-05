@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,7 +118,7 @@ public class LectorDeArchivos {
                 String cadena;
                 while((cadena = lector.readLine())!= null){
                     String [] lista =  cadena.split(",");
-                    Movimiento movimiento = new Movimiento(lista[0],lista[1], lista[2], Double.parseDouble(lista[3]));
+                    Movimiento movimiento = new Movimiento(LocalDate.parse(lista[0]),lista[1], lista[2], Double.parseDouble(lista[3]));
                     movimientos.add(movimiento);
                 }
             }else{

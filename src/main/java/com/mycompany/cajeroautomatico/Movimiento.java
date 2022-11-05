@@ -10,23 +10,23 @@ import java.time.LocalTime;
 import java.util.Date;
 
 public class Movimiento {
-   private String fecha;
    private FileWriter archivo;
    private PrintWriter escritor;
    private String hacia;
    private double importe;
    private String concepto;
+   private LocalDate fecha;
    
     public Movimiento() {
         this.archivo = null;
         this.escritor=null;
     }
 
-    public Movimiento(String fecha,String concepto, String hacia, double importe) {
-        this.fecha = fecha;
+    public Movimiento(LocalDate fecha, String concepto, String hacia, double importe) {
         this.hacia = hacia;
         this.importe = importe;
         this.concepto = concepto;
+        this.fecha = null;
     }
  
     public Movimiento( String hacia, double importe, String concepto) {
@@ -35,7 +35,7 @@ public class Movimiento {
         this.concepto = concepto;
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
@@ -60,24 +60,24 @@ public class Movimiento {
     }
 
     public void imprimirTicket( String hacia, double importe, String concepto) throws IOException{
-        LocalTime fecha= LocalTime.now();
+        this.fecha= LocalDate.now();
         try {
             this.archivo = new FileWriter ("C:\\Users\\lbarr\\OneDrive\\Escritorio\\Textos de Programa\\Ticket.txt");
             this.escritor = new PrintWriter(this.archivo);
             
-            this.escritor.println(fecha + ", "+concepto + ", hacia"+ hacia + ", "+ importe);     
+            this.escritor.println(fecha + ", "+concepto + ", hacia "+ hacia + ", "+ importe);     
         }catch(Exception e){
             System.out.println("Error " + e.getMessage());
         }finally{
             this.archivo.close();
         }
     }
-    public void guardarMovimientos(Cuenta desde,Cuenta hacia, double importe, String concept) throws IOException{
-        LocalTime fecha= LocalTime.now();
+    public void guardarMovimientos(String hacia, double importe, String concept) throws IOException{
+        this.fecha= LocalDate.now();
         try {
             this.escritor = new PrintWriter("C:\\Users\\lbarr\\OneDrive\\Escritorio\\Textos de Programa\\Movimientos.txt");
             
-            this.escritor.println(fecha + ","+concepto +","+hacia.getAlias() + ","+ importe);     
+            this.escritor.println(fecha + ","+concepto +","+hacia + ","+ importe);     
         }catch(Exception e){
             System.out.println("Error " + e.getMessage());
         }
